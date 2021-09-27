@@ -1,19 +1,9 @@
-# vue-lesson
+# sims-lowcode
+ sims-lowcode是一个基于vue3+jsx的表单设计器,也不至于表单设计,最终目标的可以根据生成的模型,在业务中会直接生成组件,直接使用
 
-## Project setup
-```
-npm install
-```
+## 功能
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+1. 组件拖拽生成  (已完成)
+2. 组件预览 
+3. 生成模型
+4. 载入模型,生成组件
