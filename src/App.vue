@@ -1,26 +1,40 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-09-26 15:11:14
+ * @LastEditTime: 2021-09-26 15:21:44
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /vue-lesson/src/App.vue
+-->
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <editor v-model="state"></editor>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import { ref ,provide} from 'vue'
+import data from './data.json'
+import editor from './packages/editor'
+import {registerConfig as config} from './utils/editor-config'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  components:{
+    editor
+  },
+  setup() {
+    const state = ref(data)
+    provide('config',config)
+    return { state }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.app{
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
 }
 </style>
