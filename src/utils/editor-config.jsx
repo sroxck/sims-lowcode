@@ -29,25 +29,25 @@ registerConfig.register({
 })
 registerConfig.register({
     label:"文本",
-    perview:()=><ElInput placeholder="预览输入框"></ElInput>,
-    render:()=><ElInput placeholder="渲染输入框"></ElInput>,
+    perview:()=><ElInput  style="width:130px" placeholder="预览输入框"></ElInput>,
+    render:()=><ElInput style="width:130px" placeholder="渲染输入框"></ElInput>,
     key:'input'
 })
 registerConfig.register({
     label:"评分",
-    perview:()=><ElRate ></ElRate>,
-    render:()=><ElRate ></ElRate>,
+    perview:()=><ElRate style="width:130px"></ElRate>,
+    render:()=><ElRate style="width:130px"></ElRate>,
     key:'rate'
 })
 registerConfig.register({
     label:"滑块",
-    perview:()=><ElSlider  style="width:100px" ></ElSlider>,
-    render:()=><ElSlider style="width:100px"></ElSlider>,
+    perview:()=><ElSlider  style="width:130px" ></ElSlider>,
+    render:()=><ElSlider style="width:130px"></ElSlider>,
     key:'slider'
 })
 registerConfig.register({
     label:"日期",
-    perview:()=><ElDatePicker type="date" placeholder="Pick a day"></ElDatePicker>,
-    render:()=><ElDatePicker type="date" placeholder="Pick a day"></ElDatePicker>,
+    perview:()=><ElDatePicker style="width:130px" type="date" placeholder="Pick a day"></ElDatePicker>,
+    render:()=><ElDatePicker  style="width:130px" type="date" placeholder="Pick a day"></ElDatePicker>,
     key:'date'
 })

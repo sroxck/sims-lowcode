@@ -21,55 +21,57 @@ export default defineComponent({
         ctx.emit('update:modelValue',deepcopy(newValue))
       }
     })
+
     const containerStyles = computed(()=>({
       width:data.value.container.width+'px',
       height:data.value.container.height+'px' 
     }))
    
     // 1 实现菜单的拖拽功能
-    const {dragstart,dragend} = useMenuDrag(containerRef,data) 
-    // 2 实现画布组件获取焦点,选中后直接进行拖拽
+    const {dragstart,dragend} = useMenuDrag(containerRef,data)
 
-    const {onMousedown,focusData,containerMouseDown} = useFocus(data,(e)=>{
-      mouseHandel(e)
-    })
-    const {mouseHandel,} = useBlockDrag(focusData)
-  
+    // 2 实现画布组件获取焦点,选中后直接进行拖拽
+    const {onMousedown,focusData,containerMouseDown} = useFocus(data,(e)=> mouseHandel(e))
+    const {mouseHandel} = useBlockDrag(focusData)
     
     // 3 实现拖拽多个元素
-  // 点击容器让选中的组件失去焦点
  
-
   
     return () => 
-    <div class="editor">
-    <div class="log">sims-lowcode </div>
-      <div class="editor-left">
-      <p style="padding:0 10px">基础组件</p>
-          {/**根据注册列表,渲染对应的内容 实现h5拖拽*/}
+      <div class="editor">
+        {/** logo区域 */}
+        <div class="log">sims-lowcode </div>
+        {/** 左侧物料区 */}
+        <div class="editor-left">
+          <p style="padding:0 10px">基础组件</p>
+          {/**根据预设注册列表,渲染对应的内容 通过实现h5拖拽*/}
           {config.componentList.map(component=>(
             <div class="editor-left-item" draggable ondragend={dragend}  ondragstart={(e)=>{dragstart(e,component)}}>
               <span style="font-size: 12px; ">{component.label}组件</span>
               <div>{component.perview()}</div>
             </div>
           ))}
-        
-      </div>
-      <div class="editor-top">菜单栏</div>
-      <div class="editor-right">控制区</div>
-      <div class="editor-container" >
-        {/**负责产生滚动条 */}
-        <div class="editor-container-canvas">
-          {/** 画布 */}
-          <div class="editor-container-canvas_content" onMousedown={e=>{containerMouseDown(e)}} style={containerStyles.value} ref={containerRef}>
-            {
-              data.value.blocks.map((item)=>(
-               <EditorBlock class={item.focus?'editor-block-focus':''} block={item} onMousedown={e=>{onMousedown(e,item)}}></EditorBlock>
-              ))
-            }
+        </div>
+        {/** 菜单区 */}
+        <div class="editor-top">菜单栏</div>
+        {/** 右侧属性控制区 */}
+        <div class="editor-right">控制区</div>
+        {/** 中间画布区域 */}
+        <div class="editor-container" >
+            {/**负责产生滚动条的辅助div */}
+          <div class="editor-container-canvas">
+            {/** 主画布 start*/}
+            <div class="editor-container-canvas_content" onMousedown={e=>{containerMouseDown(e)}} style={containerStyles.value} ref={containerRef}>
+              {/** 根据数组循环生成组件,每次拖动物料到画布,数组长度+1 */}
+              {
+                data.value.blocks.map((item)=>(
+                  <EditorBlock class={item.focus?'editor-block-focus':''} block={item} onMousedown={e=>{onMousedown(e,item)}}></EditorBlock>
+                ))
+              }
+            </div>
+            {/** 主画布 end*/}
           </div>
         </div>
       </div>
-    </div>
-  }
+    }
 })
