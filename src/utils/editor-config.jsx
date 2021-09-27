@@ -1,6 +1,6 @@
 // 提供一个列表区,可以显示所有的物料
 // 需要一个映射关系,key对应的组件
-import {ElButton, ElInput} from 'element-plus'
+import {ElButton, ElInput,ElRate,ElSlider,ElDatePicker} from 'element-plus'
 function createEditorConfig(){
     const componentList = []
     const componentMap = {}
@@ -32,4 +32,22 @@ registerConfig.register({
     perview:()=><ElInput placeholder="预览输入框"></ElInput>,
     render:()=><ElInput placeholder="渲染输入框"></ElInput>,
     key:'input'
+})
+registerConfig.register({
+    label:"评分",
+    perview:()=><ElRate ></ElRate>,
+    render:()=><ElRate ></ElRate>,
+    key:'rate'
+})
+registerConfig.register({
+    label:"滑块",
+    perview:()=><ElSlider  style="width:100px" ></ElSlider>,
+    render:()=><ElSlider style="width:100px"></ElSlider>,
+    key:'slider'
+})
+registerConfig.register({
+    label:"日期",
+    perview:()=><ElDatePicker type="date" placeholder="Pick a day"></ElDatePicker>,
+    render:()=><ElDatePicker type="date" placeholder="Pick a day"></ElDatePicker>,
+    key:'date'
 })

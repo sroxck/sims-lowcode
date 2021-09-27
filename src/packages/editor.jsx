@@ -43,11 +43,13 @@ export default defineComponent({
   
     return () => 
     <div class="editor">
+    <div class="log">sims-lowcode </div>
       <div class="editor-left">
+      <p style="padding:0 10px">基础组件</p>
           {/**根据注册列表,渲染对应的内容 实现h5拖拽*/}
           {config.componentList.map(component=>(
             <div class="editor-left-item" draggable ondragend={dragend}  ondragstart={(e)=>{dragstart(e,component)}}>
-              <span>{component.label}</span>
+              <span style="font-size: 12px; ">{component.label}组件</span>
               <div>{component.perview()}</div>
             </div>
           ))}

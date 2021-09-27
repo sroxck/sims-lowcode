@@ -4,9 +4,11 @@
     &-left,&-right{
         position: absolute;
         width: 270px;
-        background: red ;
-        top :0;
+        // background: red ;
+        top :60px;
         bottom :0;
+        box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
+        border: 1px solid #d9d9d9;
     }
     &-left{
         left:0;
@@ -14,7 +16,7 @@
             width:250px;
             margin: 20px auto;
             display: flex;
-            justify-content: center;
+            justify-content: right;
             align-items: center;
             background:#fff;
             padding: 20px;
@@ -25,8 +27,8 @@
             position: relative;
             > span {
                 position: absolute;
-                top: 0;
-                left: 0;
+                top: 3px;
+                left: 3px;
                 background-color:#fff;
                 padding: 4px;
                 color: #000;
@@ -38,7 +40,8 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-color: #ccc;
+                border: 1px dashed #000;
+                // background-color: #ccc;
                 opacity: 0.2;
             }
         }
@@ -54,7 +57,7 @@
         background-color: pink;
     }
     &-container{
-        padding: 80px 270px 0;
+        padding: 80px 280px 0;
         height: 100%;
         box-sizing: border-box;
         &-canvas{
@@ -78,7 +81,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #ccc;
+        // background-color: #ccc;
         opacity: 0.2;
     }
 }
@@ -86,4 +89,12 @@
     &::after{
         border:2px dashed  red
     }
+}
+.log{
+    height: 60px;
+    box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    box-sizing: border-box;
 }
